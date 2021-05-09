@@ -13,14 +13,14 @@ const addToDo = (text) => {
 const deleteToDo = (id) => {
   return {
     type: DELETE,
-    id,
+    id: parseInt(id),
   };
 };
 
 const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      const newObj = { text: action.text, id: Date.now };
+      const newObj = { text: action.text, id: Date.now() };
       return [newObj, ...state];
     case DELETE:
       const cleaned = state.filter((toDo) => toDo.id !== action.id);
